@@ -5,6 +5,14 @@ public class Plaza {
 	
 	private double precio;
 	
+	private int numeroPlaza;
+	
+	public int getNumeroPlaza() {
+		return numeroPlaza;
+	}
+	public void setNumeroPlaza(int numeroPlaza) {
+		this.numeroPlaza = numeroPlaza;
+	}
 	public Cliente getCliente() {
 		return cliente;
 	}
