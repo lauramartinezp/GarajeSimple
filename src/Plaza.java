@@ -38,7 +38,7 @@ public class Plaza {
 		if (cliente==null) {
 			return true;
 		} else {
-			return true;
+			return false;
 		}
 	}
 
