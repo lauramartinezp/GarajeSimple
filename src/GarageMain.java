@@ -31,13 +31,14 @@ public class GarageMain {
 		System.out.println("Bienvenido a nuestro garaje, seleccione una opcion: ");
 		System.out.println("1:Listar Plazas Garaje Libre");
 		System.out.println("2:Listar Plazas Garaje Ocupadas");
-		System.out.println("3:Ver Ingresos");
-		System.out.println("4:Reservar Plazas");
+		System.out.println("3:Reservar Plazas");
+		System.out.println("4:Ver Ingresos");
 		System.out.println("5:Listar Clientes");
 		System.out.println("6:Listar Vehiculos");
 		
 		Scanner in = new Scanner(System.in);
 		Integer opcion = in.nextInt();
+		Boolean resultado = true;
 		
 		System.out.println("Ha elegido la opcion :" + opcion);
 		
@@ -56,13 +57,13 @@ public class GarageMain {
 			
 		case 3:
 			
-			
+			resultado=controlador.reservarPlaza();
 			
 			break;
 
 		case 4:
 			
-			controlador.reservarPlaza();
+			
 			
 			break;
 			
@@ -91,7 +92,15 @@ public class GarageMain {
 			break;
 		}
 		
-		in.close();
+		//logica de si habiaplaza o no
+		
+		if (opcion==3&&resultado) {
+			System.out.println("Se ha reservado su plaza.");
+		} else if(opcion==3) {
+			System.out.println("No hay plazas disponibles");
+		}
+		
+		iniciarAplicacion();
 	}
 
 	public static void inicializarComponentes() {
