@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-import com.sun.media.sound.SimpleSoundbank;
 
 public class GarageMain {
 
