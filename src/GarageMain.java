@@ -12,7 +12,7 @@ public class GarageMain {
 		
 		//inicializar los componentes de la aplicacion
 		
-		//4 clientes
+		//5 clientes
 		
 		//5 vehiculos
 		
@@ -31,7 +31,10 @@ public class GarageMain {
 		System.out.println("Bienvenido a nuestro garaje, seleccione una opcion: ");
 		System.out.println("1:Listar Plazas Garaje Libre");
 		System.out.println("2:Listar Plazas Garaje Ocupadas");
-		System.out.println("3:Calcular Ingresos Mensuales");
+		System.out.println("3:Ver Ingresos");
+		System.out.println("4:Reservar Plazas");
+		System.out.println("5:Listar Clientes");
+		System.out.println("6:Listar Vehiculos");
 		
 		Scanner in = new Scanner(System.in);
 		Integer opcion = in.nextInt();
@@ -57,7 +60,34 @@ public class GarageMain {
 			
 			break;
 
+		case 4:
+			
+			controlador.reservarPlaza();
+			
+			break;
+			
+		case 5:
+			
+			
+			
+			break;
+			
+		case 6:
+			
+			
+			
+			break;
+			
+		case 7:
+			
+			
+			
+			break;
+			
 		default:
+			
+			System.out.println("Error");
+			
 			break;
 		}
 		
@@ -99,6 +129,10 @@ public class GarageMain {
 		
 		
 		
+	}
+
+	public static Garaje getGaraje() {
+		return garaje;
 	}
 	
 	
