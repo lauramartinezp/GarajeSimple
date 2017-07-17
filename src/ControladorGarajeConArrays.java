@@ -1,15 +1,34 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ControladorGarajeConArrays implements ControladorGaraje{
 
 	@Override
-	public Plaza[] listarPlazasLibres() {
-		return null;
+	public void listarPlazasLibres() {
+		
+		List<Plaza> plazaslibres= new ArrayList<Plaza>();
+		
+		Plaza[] plazas=GarageMain.getGaraje().getPlazas();
+		
+		for (int i = 0; i < plazas.length; i++) {
+			Plaza plaza = plazas[i];
+			
+			if(plaza.getLibre()) {
+				plazaslibres.add(plaza);
+			}
+		}
+		//listar por pantalla
+		
+		for (Plaza plaza : plazas) {
+			System.out.println(plaza);
+		}
+		
 	}
 
 	@Override
-	public Plaza[] listarPlazasOcupadas() {
-		return null;
+	public void listarPlazasOcupadas() {
+	
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 
 public class Plaza {
 
+
 	private Cliente cliente;
 	
 	private double precio;
@@ -41,7 +42,10 @@ public class Plaza {
 		}
 	}
 
-
+	@Override
+	public String toString() {
+		return "Plaza [cliente=" + cliente + ", precio=" + precio + ", numeroPlaza=" + numeroPlaza + "]";
+	}
 
 	
 	

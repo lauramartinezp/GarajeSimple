@@ -1,8 +1,8 @@
 
 public interface ControladorGaraje {
 
-	Plaza[] listarPlazasLibres();
-	Plaza[] listarPlazasOcupadas();
+	void listarPlazasLibres();
+	void listarPlazasOcupadas();
 	boolean reservarPlaza();
 	
 	
