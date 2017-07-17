@@ -1,7 +1,13 @@
+import java.util.Scanner;
+
+import com.sun.media.sound.SimpleSoundbank;
 
 public class GarageMain {
 
 	static Garaje garaje;
+	
+	static ControladorGaraje controlador;
+	
 	
 	public static void main(String[] args) {
 		
@@ -17,8 +23,48 @@ public class GarageMain {
 
 		inicializarComponentes();
 		
+		iniciarAplicacion();
+		
 	}
 	
+	private static void iniciarAplicacion() {
+
+		System.out.println("Bienvenido a nuestro garaje, seleccione una opcion: ");
+		System.out.println("1:Listar Plazas Garaje Libre");
+		System.out.println("2:Listar Plazas Garaje Ocupadas");
+		System.out.println("3:Calcular Ingresos Mensuales");
+		
+		Scanner in = new Scanner(System.in);
+		Integer opcion = in.nextInt();
+		
+		System.out.println("Ha elegido la opcion :" + opcion);
+		
+		switch (opcion) {
+		case 1:
+			
+			controlador.listarPlazasLibres();
+			
+			break;
+			
+		case 2:
+		
+			controlador.listarPlazasOcupadas();
+			
+			break;
+			
+		case 3:
+			
+			
+			
+			break;
+
+		default:
+			break;
+		}
+		
+		in.close();
+	}
+
 	public static void inicializarComponentes() {
 		
 		garaje = new Garaje();
@@ -50,9 +96,12 @@ public class GarageMain {
 		
 		garaje.setPlazas(plazas);
 		
-		System.out.println("test");
+		controlador = new ControladorGarajeConArrays();
 		
 		
 		
 	}
+	
+	
+	
 }

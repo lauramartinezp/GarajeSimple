@@ -3,8 +3,6 @@ public class Garaje {
 
 	private Plaza[] plazas;
 	
-	private String nombreGaraje;
-	
 	public Plaza[] getPlazas() {
 		return plazas;
 	}
