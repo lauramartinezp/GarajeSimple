@@ -33,7 +33,7 @@ public class ControladorGarajeConArrays implements ControladorGaraje{
 		cliente.setNombreCompleto(nombreCompleto);
 		
 		System.out.println("Tipo de vehículo del cliente: ");
-		System.out.println("1: Coche;");
+		System.out.println("1: Coche");
 		System.out.println("2: Moto");
 		System.out.println("3.Camion");
 		
