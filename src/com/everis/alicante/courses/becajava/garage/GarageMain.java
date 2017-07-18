@@ -1,10 +1,15 @@
 package com.everis.alicante.courses.becajava.garage;
+
+import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 import com.everis.alicante.courses.becajava.garage.controller.ControladorGarajeConArrays;
 import com.everis.alicante.courses.becajava.garage.domain.Garaje;
 import com.everis.alicante.courses.becajava.garage.domain.Plaza;
 import com.everis.alicante.courses.becajava.garage.interfaces.ControladorGaraje;
+import com.everis.alicante.courses.becajava.garage.interfaces.PlazaDAO;
+import com.everis.alicante.courses.becajava.garage.interfaces.PlazaDAOFileImp;
 
 
 public class GarageMain {
@@ -14,7 +19,7 @@ public class GarageMain {
 	static ControladorGaraje controlador;
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
 		//inicializar los componentes de la aplicacion
 		
@@ -32,8 +37,8 @@ public class GarageMain {
 		
 	}
 	
-	private static void iniciarAplicacion() {
-
+	private static void iniciarAplicacion() throws IOException {
+		System.out.println("*****************************************************************************");
 		System.out.println("Bienvenido a nuestro garaje, seleccione una opcion: ");
 		System.out.println("1:Listar Plazas Garaje Libre");
 		System.out.println("2:Listar Plazas Garaje Ocupadas");
@@ -109,42 +114,27 @@ public class GarageMain {
 		iniciarAplicacion();
 	}
 
-	public static void inicializarComponentes() {
+	public static void inicializarComponentes() throws IOException {
 		
 		garaje = new Garaje();
 		
-		Plaza[] plazas = new Plaza[30];
+		PlazaDAO plazaDAO = new PlazaDAOFileImp();
 		
-		for (int i = 0; i < plazas.length; i++) {
-			Plaza plazaTemp = new Plaza();
-			
-			plazaTemp.setNumeroPlaza(i+1);
-			
-			if (i<10) {
-				
-				plazaTemp.setPrecio(50);
-				
-			} else if (i<20){
-				
-				plazaTemp.setPrecio(75);
-				
-			}else {
-				
-				plazaTemp.setPrecio(100);
-				
-			}
-			plazas[i]=plazaTemp;
-			
-			
-		}
+	//	Plaza [] plazas = plazaDAO.readPlazas();
 		
-		garaje.setPlazas(plazas);
+		
+		List<Plaza> plazasTemp = plazaDAO.readPlazas();
+			
+			
+		
+		
+		garaje.setPlazas(plazasTemp);
 		
 		controlador = new ControladorGarajeConArrays();
 		
 		
-		
 	}
+	
 
 	public static Garaje getGaraje() {
 		return garaje;

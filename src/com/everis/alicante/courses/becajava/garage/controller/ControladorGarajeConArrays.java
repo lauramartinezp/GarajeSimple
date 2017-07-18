@@ -1,5 +1,7 @@
 package com.everis.alicante.courses.becajava.garage.controller;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,9 +12,12 @@ import com.everis.alicante.courses.becajava.garage.domain.Coche;
 import com.everis.alicante.courses.becajava.garage.domain.Garaje;
 import com.everis.alicante.courses.becajava.garage.domain.Moto;
 import com.everis.alicante.courses.becajava.garage.domain.Plaza;
+import com.everis.alicante.courses.becajava.garage.domain.Reserva;
 import com.everis.alicante.courses.becajava.garage.domain.Vehiculo;
 import com.everis.alicante.courses.becajava.garage.interfaces.Aparcable;
 import com.everis.alicante.courses.becajava.garage.interfaces.ControladorGaraje;
+import com.everis.alicante.courses.becajava.garage.interfaces.ReservaDAO;
+import com.everis.alicante.courses.becajava.garage.interfaces.ReservaDAOFileImp;
 
 public class ControladorGarajeConArrays implements ControladorGaraje{
 
@@ -21,10 +26,11 @@ public class ControladorGarajeConArrays implements ControladorGaraje{
 		
 		List<Plaza> plazaslibres= new ArrayList<Plaza>();
 		
-		Plaza[] plazas=GarageMain.getGaraje().getPlazas();
+		List<Plaza> plazas=GarageMain.getGaraje().getPlazas();
 		
-		for (int i = 0; i < plazas.length; i++) {
-			Plaza plaza = plazas[i];
+		
+		for (int i = 0; i < plazas.size(); i++) {
+			Plaza plaza = plazas.get(i);
 			
 			if(plaza.getLibre()) {
 				plazaslibres.add(plaza);
@@ -43,10 +49,10 @@ public class ControladorGarajeConArrays implements ControladorGaraje{
 		
 		List<Plaza> plazasOcupadas= new ArrayList<Plaza>();
 		
-		Plaza[] plazas=GarageMain.getGaraje().getPlazas();
+		List<Plaza> plazas=GarageMain.getGaraje().getPlazas();
 		
-		for (int i = 0; i < plazas.length; i++) {
-			Plaza plaza = plazas[i];
+		for (int i = 0; i < plazas.size(); i++) {
+			Plaza plaza = plazas.get(i);
 			
 			if(!plaza.getLibre()) {
 				plazasOcupadas.add(plaza);
@@ -61,11 +67,13 @@ public class ControladorGarajeConArrays implements ControladorGaraje{
 	}
 
 	@Override
-	public boolean reservarPlaza() {
+	public boolean reservarPlaza() throws IOException {
 		
 		//logica de crear cliente
 		
 		Cliente cliente= new Cliente();
+		
+		ReservaDAO dao = new ReservaDAOFileImp();
 		
 		
 		//vasmoa a escribir por pantalla un mentodo para meter los datos del cliente
@@ -108,12 +116,6 @@ public class ControladorGarajeConArrays implements ControladorGaraje{
 		vehiculo.setMatricula(in.nextLine());
 		
 		
-		if (vehiculo instanceof Coche) {
-			
-			((Coche)(vehiculo)).setMarca("");
-			
-		} 
-		
 		
 		cliente.setVehiculo(vehiculo);
 		
@@ -127,14 +129,23 @@ public class ControladorGarajeConArrays implements ControladorGaraje{
 		
 		Garaje garaje = GarageMain.getGaraje();
 		
-		Plaza[] plazas=garaje.getPlazas();
+		List<Plaza> plazas=garaje.getPlazas();
 		
-		for (int i = 0; i < plazas.length; i++) {
-			Plaza plaza = plazas[i];
+		for (int i = 0; i < plazas.size(); i++) {
+			Plaza plaza = plazas.get(i);
 			
 			if (plaza.getLibre()&& vehiculo instanceof Aparcable) {
 				plaza.setCliente(cliente);
 				hayplaza=true;
+				
+				
+				Reserva reserva = new Reserva();
+				reserva.setCliente(cliente);
+				reserva.setPlaza(plaza);
+				reserva.setFechaReserva(Calendar.getInstance().getTime());
+				
+				dao.saveReserva(reserva);
+				
 				return hayplaza;
 			}
 		}
