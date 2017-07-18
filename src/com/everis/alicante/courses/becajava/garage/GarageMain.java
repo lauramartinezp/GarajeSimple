@@ -1,4 +1,10 @@
+package com.everis.alicante.courses.becajava.garage;
 import java.util.Scanner;
+
+import com.everis.alicante.courses.becajava.garage.controller.ControladorGarajeConArrays;
+import com.everis.alicante.courses.becajava.garage.domain.Garaje;
+import com.everis.alicante.courses.becajava.garage.domain.Plaza;
+import com.everis.alicante.courses.becajava.garage.interfaces.ControladorGaraje;
 
 
 public class GarageMain {
@@ -43,7 +49,7 @@ public class GarageMain {
 		System.out.println("Ha elegido la opcion :" + opcion);
 		
 		switch (opcion) {
-		case 1:
+		case 1:	
 			
 			controlador.listarPlazasLibres();
 			

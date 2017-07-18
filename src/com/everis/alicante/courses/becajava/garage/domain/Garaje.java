@@ -1,4 +1,4 @@
-
+package com.everis.alicante.courses.becajava.garage.domain;
 public class Garaje {
 
 	private Plaza[] plazas;

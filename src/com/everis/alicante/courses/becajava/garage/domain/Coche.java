@@ -1,5 +1,7 @@
+package com.everis.alicante.courses.becajava.garage.domain;
+import com.everis.alicante.courses.becajava.garage.interfaces.Aparcable;
 
-public class Moto extends Vehiculo implements Aparcable {
+public class Coche extends Vehiculo implements Aparcable {
 
 	private String marca;
 
@@ -14,8 +16,7 @@ public class Moto extends Vehiculo implements Aparcable {
 	@Override
 	public void aparcar() {
 		System.out.println("puedo aparcar");
-		
 	}
-
+	
 	
 }
