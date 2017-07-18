@@ -1,6 +1,7 @@
 
 public class Vehiculo {
 
+
 	private String matricula;
 
 	public String getMatricula() {
@@ -10,5 +11,9 @@ public class Vehiculo {
 	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
-	
+
+	@Override
+	public String toString() {
+		return getMatricula();
+	}
 }

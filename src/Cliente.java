@@ -1,6 +1,7 @@
 
 public class Cliente {
 
+
 	private String nif;
 	
 	private String nombreCompleto;
@@ -31,4 +32,8 @@ public class Cliente {
 		this.vehiculo = vehiculo;
 	}
 	
+	@Override
+	public String toString() {
+		return "Cliente= " + nombreCompleto +", nif=" + nif + ", vehiculo=" + vehiculo;
+	}
 }

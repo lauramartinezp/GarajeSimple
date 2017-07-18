@@ -44,7 +44,7 @@ public class Plaza {
 
 	@Override
 	public String toString() {
-		return "Plaza [cliente=" + cliente + ", precio=" + precio + ", numeroPlaza=" + numeroPlaza + "]";
+		return "Plaza "+ numeroPlaza +", " + cliente + ", precio=" + precio;
 	}
 
 	
