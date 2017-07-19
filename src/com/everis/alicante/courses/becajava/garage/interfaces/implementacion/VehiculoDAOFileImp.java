@@ -4,14 +4,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import com.everis.alicante.courses.becajava.garage.GarageMain;
-import com.everis.alicante.courses.becajava.garage.domain.Plaza;
-import com.everis.alicante.courses.becajava.garage.domain.Reserva;
+
 import com.everis.alicante.courses.becajava.garage.domain.Vehiculo;
 import com.everis.alicante.courses.becajava.garage.interfaces.VehiculoDAO;
 
