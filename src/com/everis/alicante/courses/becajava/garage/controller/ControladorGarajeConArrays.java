@@ -2,7 +2,10 @@ package com.everis.alicante.courses.becajava.garage.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import com.everis.alicante.courses.becajava.garage.GarageMain;
@@ -15,9 +18,8 @@ import com.everis.alicante.courses.becajava.garage.domain.Plaza;
 import com.everis.alicante.courses.becajava.garage.domain.Reserva;
 import com.everis.alicante.courses.becajava.garage.domain.Vehiculo;
 import com.everis.alicante.courses.becajava.garage.interfaces.Aparcable;
-import com.everis.alicante.courses.becajava.garage.interfaces.ControladorGaraje;
 import com.everis.alicante.courses.becajava.garage.interfaces.ReservaDAO;
-import com.everis.alicante.courses.becajava.garage.interfaces.ReservaDAOFileImp;
+import com.everis.alicante.courses.becajava.garage.interfaces.implementacion.ReservaDAOFileImp;
 
 public class ControladorGarajeConArrays implements ControladorGaraje{
 
@@ -143,8 +145,9 @@ public class ControladorGarajeConArrays implements ControladorGaraje{
 				reserva.setCliente(cliente);
 				reserva.setPlaza(plaza);
 				reserva.setFechaReserva(Calendar.getInstance().getTime());
+				reserva.setCodigoReserva("AUN NO PO");
 				
-				dao.saveReserva(reserva);
+				dao.readReserva();
 				
 				return hayplaza;
 			}
@@ -153,6 +156,41 @@ public class ControladorGarajeConArrays implements ControladorGaraje{
 		
 		//si hay plazas libres seteamos un cliente a la plaza que queramos
 		
+		
+	}
+
+	@Override
+	public void listarClientes() {
+		
+		Map<String, Cliente> clientes = GarageMain.getGaraje().getClientes();
+		
+		Collection<Cliente> collection =clientes.values();
+		
+		for (Iterator iterator = collection.iterator(); iterator.hasNext();) {
+			Cliente cliente =(Cliente) iterator.next();
+			
+			System.out.println(cliente.getNombreCompleto());
+		}
+		
+	}
+
+	@Override
+	public void listarReservas() throws IOException {
+	
+		
+		ReservaDAO reservaDao= new ReservaDAOFileImp();
+		
+		Map<String, Reserva> reservas = reservaDao.readReserva();
+		
+		 Collection<Reserva> listaReservas = reservas.values();
+		 
+		 for (Reserva reserva : listaReservas) {
+			 
+			 System.out.println("numero de plaza reservada: " +reserva.getPlaza().getNumeroPlaza());
+			 System.out.println("cliente: " +reserva.getCliente().getNombreCompleto());
+			 System.out.println("vehiculo: " +reserva.getCliente().getVehiculo().getMatricula() +" - " + reserva.getCliente().getVehiculo().getTipoVehiculo());
+			
+		}
 		
 	}
 

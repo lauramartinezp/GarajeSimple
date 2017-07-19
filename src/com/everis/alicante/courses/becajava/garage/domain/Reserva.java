@@ -4,6 +4,8 @@ import java.util.Date;
 
 public class Reserva {
 	
+	private String codigoReserva;
+	
 	private Plaza plaza;
 	
 	private Cliente cliente;
@@ -53,6 +55,25 @@ public class Reserva {
 	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
 	}
+	
+	public String getCodigoReserva() {
+		
+		//logica del codigo de reserva
+		
+		//codigoReserva="";
+		//codigoReserva=codigoReserva.concat(String.valueOf(this.plaza.getNumeroPlaza()));
+		//codigoReserva=codigoReserva.concat(this.GUION);
+		//codigoReserva=codigoReserva.concat(String.valueOf(this.plaza.getCliente().getNif()));
+		//codigoReserva=codigoReserva.concat(this.GUION);
+		//codigoReserva.concat(String.valueOf(Math.random()*1000000));
+		
+		return codigoReserva;
+	}
+	
+	public void setCodigoReserva(String codigoReserva) {
+		this.codigoReserva = codigoReserva;
+	}
+
 
 	@Override
 	public String toString() {
@@ -62,6 +83,8 @@ public class Reserva {
 	public String convierteAFormatoTxt() {
 		String str="";
 		
+		str = str.concat(String.valueOf(this.getCodigoReserva()));
+		str = str.concat(";");
 		str = str.concat(String.valueOf(this.plaza.getNumeroPlaza()));
 		str = str.concat(";");
 		str = str.concat(this.cliente.getNif());
@@ -74,6 +97,10 @@ public class Reserva {
 		
 		
 	}
-	
+
+	public void add(Reserva reservas) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
