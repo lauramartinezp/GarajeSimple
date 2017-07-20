@@ -123,13 +123,11 @@ public class GarageMain {
 		garaje = new Garaje();
 		
 		PlazaDAO plazaDAO = new PlazaDAOFileImp();
-		ReservaDAO reservaDAO= new ReservaDAOFileImp();
 		ClienteDAO clienteDAO= new ClienteDAOFileImp();
 		VehiculoDAO vehiculoDAO = new VehiculoDAOFileImp();
+		ReservaDAO reservaDAO= new ReservaDAOFileImp();
 		
-		garaje.setPlazas(plazaDAO.readPlazas());
-	//	garaje.setReserva(reservaDAO.readReserva());
-		
+		garaje.setPlazas(plazaDAO.readPlazas());		
 		garaje.setClientes(clienteDAO.readClientes());
 		garaje.setVehiculos(vehiculoDAO.readVehiculos());
 		garaje.setReservas(reservaDAO.readReserva());

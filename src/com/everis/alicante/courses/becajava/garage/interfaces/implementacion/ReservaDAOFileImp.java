@@ -37,31 +37,6 @@ public class ReservaDAOFileImp implements ReservaDAO{
 		buffer.close();
 		
 	}
-	
-	public static void main (String args[]) throws IOException {
-		
-		Reserva reserva= new Reserva();
-		
-		Cliente cliente = new Cliente();
-		cliente.setNif("2584685");
-		
-		Plaza plaza = new Plaza();
-		plaza.setNumeroPlaza(1);
-	
-		Vehiculo vehiculo = new Vehiculo();
-		vehiculo.setMatricula("2584 JUD");
-		
-		cliente.setVehiculo(vehiculo);
-		reserva.setCliente(cliente);
-		reserva.setPlaza(plaza);
-		reserva.setFechaReserva(Calendar.getInstance().getTime());
-		
-		
-		ReservaDAO dao = new ReservaDAOFileImp();
-		
-		dao.createReserva(reserva);
-		
-	}
 
 	@Override
 	public Map<String,Reserva> readReserva() throws IOException {
@@ -110,5 +85,28 @@ public class ReservaDAOFileImp implements ReservaDAO{
 	
 	}
 	
+	public static void main (String args[]) throws IOException {
+		
+		Reserva reserva= new Reserva();
+		
+		Cliente cliente = new Cliente();
+		cliente.setNif("2584685");
+		
+		Plaza plaza = new Plaza();
+		plaza.setNumeroPlaza(1);
 	
+		Vehiculo vehiculo = new Vehiculo();
+		vehiculo.setMatricula("2584 JUD");
+		
+		cliente.setVehiculo(vehiculo);
+		reserva.setCliente(cliente);
+		reserva.setPlaza(plaza);
+		reserva.setFechaReserva(Calendar.getInstance().getTime());
+		
+		
+		ReservaDAO dao = new ReservaDAOFileImp();
+		
+		dao.createReserva(reserva);
+		
+	}
 }
